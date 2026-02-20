@@ -82,6 +82,8 @@ footer { text-align: center; margin-top: 50px; padding: 30px; background: rgba(0
 </footer>
 <script>
 let prayerTimes = {};
+let lastDate = "";
+
 function formatTime(t) {
     if(!t) return "--:--";
     let [h, m] = t.split(':');
@@ -90,12 +92,18 @@ function formatTime(t) {
     hr = hr % 12 || 12;
     return `${hr}:${m} ${ampm}`;
 }
+
 async function loadData() {
     try {
+        const now = new Date();
+        const dateStr = now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
+        lastDate = dateStr;
+
         const city = document.getElementById('city').value;
-        const res = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Bangladesh&method=1&t=${new Date().getTime()}`);
+        const res = await fetch(`https://api.aladhan.com/v1/timingsByCity/${dateStr}?city=${city}&country=Bangladesh&method=1`);
         const data = await res.json();
         prayerTimes = data.data.timings;
+
         const list = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
         list.forEach(p => {
             const el = document.getElementById(p.toLowerCase());
@@ -103,19 +111,28 @@ async function loadData() {
         });
         document.getElementById('sehriTime').innerText = formatTime(prayerTimes.Fajr);
         document.getElementById('iftarTime').innerText = formatTime(prayerTimes.Maghrib);
-        updateLiveTracking();
-    } catch(e) { console.error("Error"); }
+    } catch(e) { console.error("Error loading data"); }
 }
+
 function updateLiveTracking() {
     const now = new Date();
+    const dateStr = now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
+    
+    if(dateStr !== lastDate) {
+        loadData();
+        return;
+    }
+
     document.getElementById('liveClock').innerText = now.toLocaleTimeString('en-US', {hour12:true});
     if (!prayerTimes || !prayerTimes.Fajr) return;
+
     const getT = (s) => {
         let d = new Date();
         let [h, m] = s.split(':');
         d.setHours(parseInt(h), parseInt(m), 0);
         return d;
     };
+
     const diff = (target, id) => {
         let t = getT(target);
         if(now > t) t.setDate(t.getDate() + 1);
@@ -128,6 +145,7 @@ function updateLiveTracking() {
     };
     diff(prayerTimes.Fajr, 'sehriCount');
     diff(prayerTimes.Maghrib, 'iftarCount');
+
     const pList = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
     let currentIdx = -1;
     for (let i = 0; i < pList.length; i++) {
@@ -142,6 +160,7 @@ function updateLiveTracking() {
         }
     });
 }
+
 loadData();
 setInterval(updateLiveTracking, 1000);
 </script>
