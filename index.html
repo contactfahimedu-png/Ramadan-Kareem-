@@ -6,31 +6,48 @@
 <title>রমজান ২০২৬ লাইভ - আব্দুল্লাহ আল ফাহিম</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600&family=Amiri:wght@700&display=swap" rel="stylesheet">
 <style>
-:root { --gold: #ffd369; --glass: rgba(255, 255, 255, 0.1); --active: rgba(255, 211, 105, 0.3); }
+:root { --gold: #ffd369; --glass: rgba(255, 255, 255, 0.1); --active: rgba(255, 211, 105, 0.2); }
 * { margin:0; padding:0; box-sizing:border-box; font-family: 'Hind Siliguri', sans-serif; }
-body { background: #0f2027; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; min-height: 100vh; text-align: center; overflow-x: hidden; }
+body { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; min-height: 100vh; padding-bottom: 20px; }
 
-.header { padding: 30px 15px; background: rgba(0,0,0,0.3); border-bottom: 2px solid var(--gold); }
-.city-select { background: var(--gold); padding: 10px 25px; border-radius: 25px; font-weight: bold; margin-bottom: 15px; border:none; outline: none; cursor: pointer; }
+.header { text-align: center; padding: 30px 20px; background: rgba(0,0,0,0.4); border-bottom: 2px solid var(--gold); position: relative; overflow: hidden; }
+.calligraphy { font-family: 'Amiri', serif; font-size: 45px; color: var(--gold); margin: 10px 0; }
+.container { max-width: 800px; margin: auto; padding: 15px; }
 
-.timer-grid { display: flex; gap: 15px; padding: 20px; justify-content: center; margin-top: -30px; }
-.timer-card { background: var(--glass); backdrop-filter: blur(10px); padding: 20px; border-radius: 20px; flex: 1; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
-.time-val { font-size: 24px; font-weight: bold; color: var(--gold); margin: 5px 0; }
-.countdown { font-family: 'Courier New', Courier, monospace; font-size: 18px; background: rgba(0,0,0,0.3); padding: 5px; border-radius: 8px; }
+/* Countdown Section */
+.timer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: -30px; }
+.timer-card { background: var(--glass); backdrop-filter: blur(15px); padding: 20px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.time-val { font-size: 28px; font-weight: bold; color: var(--gold); }
+.countdown { font-family: monospace; font-size: 20px; background: rgba(0,0,0,0.3); padding: 5px; border-radius: 8px; margin-top: 5px; }
 
-.prayer-table { width: 90%; max-width: 500px; margin: 20px auto; background: var(--glass); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+/* Table & Live Highlight */
+.prayer-table { width: 100%; margin-top: 30px; background: var(--glass); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
 table { width: 100%; border-collapse: collapse; }
-td, th { padding: 18px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 17px; }
-th { background: rgba(255,255,255,0.1); color: var(--gold); font-size: 14px; }
+th, td { padding: 18px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.4s; }
+th { background: rgba(255,255,255,0.15); color: var(--gold); text-transform: uppercase; font-size: 14px; }
 
-.active-row { background: var(--active) !important; color: var(--gold); font-weight: bold; position: relative; }
-.active-row td { border-bottom: 1px solid var(--gold); }
-.active-row::before { content: "• LIVE"; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 10px; color: #44ff44; font-weight: bold; }
+/* Premium Highlight Style */
+.active-prayer { 
+    background: var(--active) !important; 
+    box-shadow: inset 0 0 20px rgba(255, 211, 105, 0.2);
+    position: relative;
+}
+.active-prayer td { color: var(--gold); font-weight: bold; font-size: 1.1em; }
+.active-prayer::after { 
+    content: "• LIVE"; 
+    position: absolute; left: 10px; top: 50%; transform: translateY(-50%); 
+    font-size: 10px; color: #44ff44; font-weight: bold; letter-spacing: 1px;
+}
 
-.dua-section { width: 90%; max-width: 500px; margin: 20px auto; padding: 20px; background: var(--glass); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+.dua-section { margin-top: 30px; background: var(--glass); padding: 25px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+.dua-title { color: var(--gold); font-weight: bold; margin-bottom: 10px; display: block; }
 .dua-arabic { font-family: 'Amiri', serif; font-size: 24px; color: var(--gold); margin: 10px 0; display: block; }
 
-footer { margin-top: 40px; padding: 30px; background: rgba(0,0,0,0.4); border-radius: 30px 30px 0 0; }
+.city-select { background: var(--gold); color: black; border: none; padding: 10px 25px; border-radius: 25px; font-weight: bold; margin-bottom: 20px; cursor: pointer; box-shadow: 0 4px 15px rgba(255,211,105,0.3); }
+
+/* Footer */
+footer { text-align: center; margin-top: 50px; padding: 30px; background: rgba(0,0,0,0.3); border-radius: 20px 20px 0 0; }
+.dev-name { color: var(--gold); font-size: 20px; font-weight: 600; text-decoration: none; }
 </style>
 </head>
 <body>
@@ -43,134 +60,127 @@ footer { margin-top: 40px; padding: 30px; background: rgba(0,0,0,0.4); border-ra
         <option value="Rajshahi">রাজশাহী</option>
         <option value="Khulna">খুলনা</option>
     </select>
-    <div style="font-family:'Amiri'; font-size:45px; color:var(--gold); margin-top: 10px;">رمضان كريم</div>
-    <h2 id="liveClock" style="letter-spacing: 2px;">--:--:--</h2>
+    <div class="calligraphy">رمضان كريم</div>
+    <h2 id="liveClock">00:00:00 AM</h2>
 </div>
 
 <div class="container">
     <div class="timer-grid">
         <div class="timer-card">
-            <small>সাহরির শেষ</small>
-            <div id="sehriTime" class="time-val">--:--</div>
-            <div id="sehriCount" class="countdown">00:00:00</div>
+            <h3>সাহরির শেষ</h3>
+            <div class="time-val" id="sehriTime">--:--</div>
+            <div class="countdown" id="sehriCount">00:00:00</div>
         </div>
         <div class="timer-card">
-            <small>ইফতারের সময়</small>
-            <div id="iftarTime" class="time-val">--:--</div>
-            <div id="iftarCount" class="countdown">00:00:00</div>
+            <h3>ইফতারের সময়</h3>
+            <div class="time-val" id="iftarTime">--:--</div>
+            <div class="countdown" id="iftarCount">00:00:00</div>
         </div>
     </div>
 
     <div class="prayer-table">
         <table>
             <thead><tr><th>নামাজ</th><th>সময়</th></tr></thead>
-            <tr id="row-Fajr"><td>ফজর (সাহরি শেষ)</td><td id="fajr">--:--</td></tr>
-            <tr id="row-Dhuhr"><td>যোহর</td><td id="dhuhr">--:--</td></tr>
-            <tr id="row-Asr"><td>আসর</td><td id="asr">--:--</td></tr>
-            <tr id="row-Maghrib"><td>মাগরিব (ইফতার)</td><td id="maghrib">--:--</td></tr>
-            <tr id="row-Isha"><td>এশা</td><td id="isha">--:--</td></tr>
+            <tbody>
+                <tr id="row-Fajr"><td>ফজর (সাহরি শেষ)</td><td id="fajr">--:--</td></tr>
+                <tr id="row-Dhuhr"><td>যোহর</td><td id="dhuhr">--:--</td></tr>
+                <tr id="row-Asr"><td>আসর</td><td id="asr">--:--</td></tr>
+                <tr id="row-Maghrib"><td>মাগরিব (ইফতার)</td><td id="maghrib">--:--</td></tr>
+                <tr id="row-Isha"><td>এশা</td><td id="isha">--:--</td></tr>
+            </tbody>
         </table>
     </div>
 
     <div class="dua-section">
-        <h4 style="color:var(--gold)">ইফতারের দোয়া</h4>
+        <span class="dua-title">ইফতারের দোয়া</span>
         <span class="dua-arabic">اَللّٰহুম্মাহ ল্যাকা সুমতু ওয়া আলা রিযকিকা আফতারতু</span>
-        <p style="font-size: 14px; opacity: 0.8;">উচ্চারণ: আল্লাহুম্মা লাকা সুমতু ওয়া আলা রিযকিকা আফতারতু।</p>
+        <p>উচ্চারণ: আল্লাহুম্মা লাকা সুমতু ওয়া আলা রিযকিকা আফতারতু।</p>
     </div>
 </div>
 
 <footer>
-    <p style="font-size: 12px; color: #bbb;">Developed by</p>
-    <h3 style="color:var(--gold); font-size: 22px;">আব্দুল্লাহ আল ফাহিম</h3>
-    <p style="font-size: 10px; color: #777; margin-top: 10px;">&copy; ২০২৬ অল রাইটস রিজার্ভড</p>
+    <p style="font-size: 13px; color: #999;">Developed by</p>
+    <p class="dev-name">আব্দুল্লাহ আল ফাহিম</p>
+    <p style="font-size: 11px; color: #666; margin-top: 10px;">&copy; ২০২৬ অল রাইটস রিজার্ভড</p>
 </footer>
 
 <script>
-let pTimes = {};
+let prayerTimes = {};
 
-function to12h(t){ 
-    if(!t) return "--:--"; 
-    let [h,m] = t.split(':'); 
+function formatTime(t) {
+    if(!t) return "--:--";
+    let [h, m] = t.split(':');
     let hr = parseInt(h);
-    let am = hr >= 12 ? 'PM' : 'AM'; 
-    return `${hr % 12 || 12}:${m} ${am}`; 
+    let ampm = hr >= 12 ? 'PM' : 'AM';
+    hr = hr % 12 || 12;
+    return `${hr}:${m} ${ampm}`;
 }
 
-async function loadData(){
-    const city = document.getElementById('city').value;
-    const url = `https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Bangladesh&method=1`;
-    
+async function loadData() {
     try {
-        const res = await fetch(url);
-        const d = await res.json();
-        pTimes = d.data.timings;
+        const city = document.getElementById('city').value;
+        const res = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Bangladesh&method=1`);
+        const data = await res.json();
+        prayerTimes = data.data.timings;
+
+        const list = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+        list.forEach(p => {
+            document.getElementById(p.toLowerCase()).innerText = formatTime(prayerTimes[p]);
+        });
+        document.getElementById('sehriTime').innerText = formatTime(prayerTimes.Fajr);
+        document.getElementById('iftarTime').innerText = formatTime(prayerTimes.Maghrib);
         
-        document.getElementById('fajr').innerText = to12h(pTimes.Fajr);
-        document.getElementById('dhuhr').innerText = to12h(pTimes.Dhuhr);
-        document.getElementById('asr').innerText = to12h(pTimes.Asr);
-        document.getElementById('maghrib').innerText = to12h(pTimes.Maghrib);
-        document.getElementById('isha').innerText = to12h(pTimes.Isha);
-        
-        document.getElementById('sehriTime').innerText = to12h(pTimes.Fajr);
-        document.getElementById('iftarTime').innerText = to12h(pTimes.Maghrib);
-        
-        update(); // ডাটা লোড হওয়ার পর সাথে সাথে আপডেট রান হবে
-    } catch (e) {
-        alert("ইন্টারনেট কানেকশন চেক করুন অথবা পেজটি রিফ্রেশ দিন।");
-    }
+        updateLiveTracking();
+    } catch(e) { console.error("Data Load Error"); }
 }
 
-function update(){
+function updateLiveTracking() {
     const now = new Date();
-    document.getElementById('liveClock').innerText = now.toLocaleTimeString('en-US', {hour12: true});
-    
-    if(!pTimes.Fajr) return;
+    document.getElementById('liveClock').innerText = now.toLocaleTimeString('en-US', {hour12:true});
 
-    const getT = (s) => { 
-        let d = new Date(); 
-        let [h,m] = s.split(':'); 
-        d.setHours(parseInt(h), parseInt(m), 0); 
-        return d; 
+    if (!prayerTimes.Fajr) return;
+
+    const getT = (s) => {
+        let d = new Date();
+        let [h, m] = s.split(':');
+        d.setHours(parseInt(h), parseInt(m), 0);
+        return d;
     };
-    
-    // Highlight Current Prayer Logic
-    const list = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+
+    let sT = getT(prayerTimes.Fajr);
+    let iT = getT(prayerTimes.Maghrib);
+    if(now > sT) sT.setDate(sT.getDate() + 1);
+    if(now > iT) iT.setDate(iT.getDate() + 1);
+
+    const diff = (target, id) => {
+        let ms = target - now;
+        let h = Math.floor(ms/3600000);
+        let m = Math.floor((ms%3600000)/60000);
+        let s = Math.floor((ms%60000)/1000);
+        document.getElementById(id).innerText = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+    };
+    diff(sT, 'sehriCount');
+    diff(iT, 'iftarCount');
+
+    const pList = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
     let currentIdx = -1;
 
-    for (let i = 0; i < list.length; i++) {
-        let t = getT(pTimes[list[i]]);
-        if (now >= t) {
+    for (let i = 0; i < pList.length; i++) {
+        let pTime = getT(prayerTimes[pList[i]]);
+        if (now >= pTime) {
             currentIdx = i;
         }
     }
 
-    list.forEach((p, index) => {
-        const row = document.getElementById('row-' + p);
-        row.classList.remove('active-row');
-        if(index === currentIdx) {
-            row.classList.add('active-row');
-        }
+    pList.forEach((p, index) => {
+        const row = document.getElementById(`row-${p}`);
+        row.classList.remove('active-prayer');
+        if(index === currentIdx) row.classList.add('active-prayer');
     });
-
-    // Countdown Logic
-    const countdown = (targetStr, id) => {
-        let t = getT(targetStr); 
-        if(now > t) t.setDate(t.getDate() + 1);
-        let diff = t - now;
-        let h = Math.floor(diff/3600000);
-        let m = Math.floor((diff%3600000)/60000);
-        let s = Math.floor((diff%60000)/1000);
-        document.getElementById(id).innerText = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-    };
-
-    countdown(pTimes.Fajr, 'sehriCount');
-    countdown(pTimes.Maghrib, 'iftarCount');
 }
 
-// Start
 loadData();
-setInterval(update, 1000);
+setInterval(updateLiveTracking, 1000);
 </script>
-
 </body>
 </html>
