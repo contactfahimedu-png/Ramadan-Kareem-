@@ -6,7 +6,7 @@
 <title>রমজান ২০২৬ লাইভ - আব্দুল্লাহ আল ফাহিম</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600&family=Amiri:wght@700&display=swap" rel="stylesheet">
 <style>
-:root { --gold: #ffd369; --glass: rgba(255, 255, 255, 0.1); --active: rgba(255, 211, 105, 0.25); }
+:root { --gold: #ffd369; --glass: rgba(255, 255, 255, 0.1); --active: rgba(255, 211, 105, 0.2); }
 * { margin:0; padding:0; box-sizing:border-box; font-family: 'Hind Siliguri', sans-serif; }
 body { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; min-height: 100vh; padding-bottom: 20px; }
 .header { text-align: center; padding: 30px 20px; background: rgba(0,0,0,0.4); border-bottom: 2px solid var(--gold); position: relative; overflow: hidden; }
@@ -22,8 +22,7 @@ th, td { padding: 18px; text-align: center; border-bottom: 1px solid rgba(255,25
 th { background: rgba(255,255,255,0.15); color: var(--gold); text-transform: uppercase; font-size: 14px; }
 .active-prayer { background: var(--active) !important; box-shadow: inset 0 0 20px rgba(255, 211, 105, 0.2); position: relative; }
 .active-prayer td { color: var(--gold); font-weight: bold; font-size: 1.1em; }
-.active-prayer::after { content: "• LIVE"; position: absolute; left: 15px; top: 50%; transform: translateY(-50%); font-size: 10px; color: #44ff44; font-weight: bold; animation: blink 1s infinite; }
-@keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+.active-prayer::after { content: "• LIVE"; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 10px; color: #44ff44; font-weight: bold; letter-spacing: 1px; }
 .dua-section { margin-top: 30px; background: var(--glass); padding: 25px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
 .dua-title { color: var(--gold); font-weight: bold; margin-bottom: 10px; display: block; }
 .dua-arabic { font-family: 'Amiri', serif; font-size: 24px; color: var(--gold); margin: 10px 0; display: block; }
@@ -41,25 +40,25 @@ footer { text-align: center; margin-top: 50px; padding: 30px; background: rgba(0
         <option value="Rajshahi">রাজশাহী</option>
         <option value="Khulna">খুলনা</option>
     </select>
-    <div class="calligraphy">RAMADAN KAREEM</div>
+    <div class="calligraphy">رمضان كريم</div>
     <h2 id="liveClock">00:00:00 AM</h2>
 </div>
 <div class="container">
     <div class="timer-grid">
         <div class="timer-card">
-            <h3>সাহরির শেষ</h3>
+            <h3>সাহরির শেষ সময়</h3>
             <div class="time-val" id="sehriTime">--:--</div>
-            <div id="sehriCount" class="countdown">00:00:00</div>
+            <div class="countdown" id="sehriCount">00:00:00</div>
         </div>
         <div class="timer-card">
-            <h3>ইফতারের সময়</h3>
+            <h3>ইফতারের সময়</h3>
             <div class="time-val" id="iftarTime">--:--</div>
-            <div id="iftarCount" class="countdown">00:00:00</div>
+            <div class="countdown" id="iftarCount">00:00:00</div>
         </div>
     </div>
     <div class="prayer-table">
         <table>
-            <thead><tr><th>নামাজ</th><th>সময়</th></tr></thead>
+            <thead><tr><th>নামাজ</th><th>সময়</th></tr></thead>
             <tbody>
                 <tr id="row-Fajr"><td>ফজর (সাহরি শেষ)</td><td id="fajr">--:--</td></tr>
                 <tr id="row-Dhuhr"><td>যোহর</td><td id="dhuhr">--:--</td></tr>
@@ -70,19 +69,19 @@ footer { text-align: center; margin-top: 50px; padding: 30px; background: rgba(0
         </table>
     </div>
     <div class="dua-section">
-        <span class="dua-title">ইফতারের দোয়া</span>
-        <span class="dua-arabic">اَللهُمَّ لَكَ صُمْتُ وَعَلىٰ رِزْقِكَ أَفْطَرْتُ</span>
-        <p>উচ্চারণ: আল্লাহুম্মা লাকা সুমতু, ওয়া আলা রিহক্বিকা আফত্বারতু।</p>
+        <span class="dua-title">ইফতারের দোয়া</span>
+        <span class="dua-arabic">ذَهَبَ الظَّمَأُ، وَابْتَلَّتِ الْعُرُوقُ، وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللَّهُ</span>
+        <p>উচ্চারণ: যাহাবায যামা-উ অবতাল্লাতিল উরুকু অসাবাতাল আজরু ইনশা-আল্লাহ।</p>
     </div>
 </div>
 <footer>
     <p style="font-size: 13px; color: #999;">Developed by</p>
-    <p class="dev-name">আব্দুল্লাহ আল ফাহিম</p>
+    <a href="#" class="dev-name">আব্দুল্লাহ আল ফাহিম</a>
     <p style="font-size: 11px; color: #666; margin-top: 10px;">&copy; ২০২৬ অল রাইটস রিজার্ভড</p>
 </footer>
 <script>
 let prayerTimes = {};
-let lastDate = "";
+let lastFetchedDate = "";
 
 function formatTime(t) {
     if(!t) return "--:--";
@@ -94,69 +93,70 @@ function formatTime(t) {
 }
 
 async function loadData() {
+    const city = document.getElementById('city').value;
+    const now = new Date();
+    const dateStr = `${now.getDate()}-${now.getMonth()+1}-${now.getFullYear()}`;
+    
     try {
-        const now = new Date();
-        const dateStr = now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
-        lastDate = dateStr;
-
-        const city = document.getElementById('city').value;
         const res = await fetch(`https://api.aladhan.com/v1/timingsByCity/${dateStr}?city=${city}&country=Bangladesh&method=1`);
         const data = await res.json();
         prayerTimes = data.data.timings;
+        lastFetchedDate = dateStr;
 
         const list = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
         list.forEach(p => {
-            const el = document.getElementById(p.toLowerCase());
-            if(el) el.innerText = formatTime(prayerTimes[p]);
+            document.getElementById(p.toLowerCase()).innerText = formatTime(prayerTimes[p]);
         });
         document.getElementById('sehriTime').innerText = formatTime(prayerTimes.Fajr);
         document.getElementById('iftarTime').innerText = formatTime(prayerTimes.Maghrib);
-    } catch(e) { console.error("Error loading data"); }
+    } catch (e) { console.error("Error fetching data:", e); }
 }
 
 function updateLiveTracking() {
     const now = new Date();
-    const dateStr = now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
-    
-    if(dateStr !== lastDate) {
-        loadData();
-        return;
-    }
-
     document.getElementById('liveClock').innerText = now.toLocaleTimeString('en-US', {hour12:true});
-    if (!prayerTimes || !prayerTimes.Fajr) return;
+    
+    if (!prayerTimes.Fajr) return;
 
-    const getT = (s) => {
+    const dateStr = `${now.getDate()}-${now.getMonth()+1}-${now.getFullYear()}`;
+    if (dateStr !== lastFetchedDate) loadData();
+
+    const getT = (s, next = false) => {
         let d = new Date();
         let [h, m] = s.split(':');
-        d.setHours(parseInt(h), parseInt(m), 0);
+        d.setHours(h, m, 0);
+        if(next) d.setDate(d.getDate() + 1);
         return d;
     };
 
+    let sT = getT(prayerTimes.Fajr);
+    let iT = getT(prayerTimes.Maghrib);
+    
+    if(now > sT) sT = getT(prayerTimes.Fajr, true);
+    if(now > iT) iT = getT(prayerTimes.Maghrib, true);
+
     const diff = (target, id) => {
-        let t = getT(target);
-        if(now > t) t.setDate(t.getDate() + 1);
-        let ms = t - now;
-        let h = Math.floor(ms/3600000);
-        let m = Math.floor((ms%3600000)/60000);
-        let s = Math.floor((ms%60000)/1000);
-        const el = document.getElementById(id);
-        if(el) el.innerText = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+        let ms = target - now;
+        let h = Math.floor(ms/3600000), m = Math.floor((ms%3600000)/60000), s = Math.floor((ms%60000)/1000);
+        document.getElementById(id).innerText = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
     };
-    diff(prayerTimes.Fajr, 'sehriCount');
-    diff(prayerTimes.Maghrib, 'iftarCount');
+
+    diff(sT, 'sehriCount');
+    diff(iT, 'iftarCount');
 
     const pList = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
-    let currentIdx = -1;
+    let currentActive = "";
     for (let i = 0; i < pList.length; i++) {
         let pTime = getT(prayerTimes[pList[i]]);
-        if (now >= pTime) currentIdx = i;
+        let nextTime = (i < pList.length - 1) ? getT(prayerTimes[pList[i+1]]) : getT(prayerTimes.Fajr, true);
+        if (now >= pTime && now < nextTime) { currentActive = pList[i]; break; }
     }
-    pList.forEach((p, index) => {
+
+    pList.forEach(p => {
         const row = document.getElementById(`row-${p}`);
         if(row) {
             row.classList.remove('active-prayer');
-            if(index === currentIdx) row.classList.add('active-prayer');
+            if(p === currentActive) row.classList.add('active-prayer');
         }
     });
 }
@@ -166,4 +166,3 @@ setInterval(updateLiveTracking, 1000);
 </script>
 </body>
 </html>
-
